@@ -56,6 +56,7 @@ var scanning = false;
 var beaconsIds = ['F7:5D:EA:B9:57:58','F2:09:F5:7D:E9:AB'];
 var beaconsNames = ['EST','DEV0FB0EBB0B'];
 var beaconsMsgs = ['Bem vindo à sala de reuniões!','Bem vindo à sala de desenvolvimento!'];
+var beaconsImgs = ['img/salare.jpg','img/saladev.jpg'];
 
 function clean(){
   var lista = document.getElementById('dev-list');
@@ -78,8 +79,7 @@ function startScan(){
       alert("Device encontrado!");
       for(var i = 0; i < beaconsIds.length; i++){
         if(device.id == beaconsIds[i] && device.rssi >= -90){
-          localStorage.msg = beaconsMsgs[i];
-          showMessage();
+          showMessage(device.id);
         }
       }
       var newButton = document.createElement('button');
@@ -110,7 +110,9 @@ function stopScan(){
   }
 }
 
-function showMessage(){
+function showMessage(id){
+  localStorage.msg = beaconsMsgs[id];
+  localStorage.img = beaconsImgs[id];
   window.location = 'showMessage.html';
 }
 
