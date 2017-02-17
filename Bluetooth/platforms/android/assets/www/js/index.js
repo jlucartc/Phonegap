@@ -52,7 +52,7 @@ app.initialize();
 
 //alert("Ok");
 var scanning = false;
-
+var rssi = -70;
 var beaconsIds = ['F7:5D:EA:B9:57:58','F2:09:F5:7D:E9:AB'];
 var beaconsNames = ['EST','DEV0FB0EBB0B'];
 var beaconsMsgs = ['Bem vindo à sala de reuniões!','Bem vindo à sala de desenvolvimento!'];
@@ -76,14 +76,15 @@ function startScan(){
     alert("Escaneando...");
     scanning = true;
     ble.startScan([],function(device){
-      alert("Device encontrado!");
+      //alert("Device encontrado!");
       for(var i = 0; i < beaconsIds.length; i++){
-        if(device.id == beaconsIds[i] && device.rssi >= -90){
-          showMessage(device.id);
+        if(device.id == beaconsIds[i] && device.rssi >= rssi){
+          alert("Beacon dentro do alcance! : "+device.rssi+" - (device.rssi > rssi): "+(device.rssi > rssi));
+          showMessage(i);
         }
       }
       var newButton = document.createElement('button');
-      var name = document.createTextNode(device.name+" - "+device.id+" - "+device.rssi);
+      var name = document.createTextNode(device.name+" - "+device.id+" - "+device.rssi+" - (device.rssi > rssi): "+(device.rssi > rssi));
       newButton.value = device.id;
       newButton.onclick = function(){ devPage(device.id); }
       newButton.className = 'list-group-item';
