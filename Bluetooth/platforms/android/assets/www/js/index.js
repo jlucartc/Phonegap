@@ -42,7 +42,7 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        clean();
+        //clean();
 
     }
 };
@@ -75,7 +75,7 @@ function startScan(){
     alert("Escaneando...");
     scanning = true;
     ble.startScan([],function(device){
-      //alert("Device encontrado!");
+      alert("Device encontrado!");
       for(var i = 0; i < beaconsIds.length; i++){
         if(device.id == beaconsIds[i] && device.rssi >= -90){
           localStorage.msg = beaconsMsgs[i];

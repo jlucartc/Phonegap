@@ -35,6 +35,7 @@
         <title>Hello World</title>
     </head>
     <body>
+      <div class="container">
             <h1>Apache Cordova</h1>
             <div id="deviceready">
                 <p class="event listening">Connecting to Device</p>
@@ -43,7 +44,9 @@
             <button class="btn btn-default" type="button" name="button" onclick="startScan()" id="escanear">Escanear</button>
             <button class="btn btn-default" type="button" name="button" onclick="stopScan()" id="parar">Parar</button>
             <div class="list-group" id="dev-list">
+              <br><button class="list-group-item" type="button" name="button">Item inicial</button>
             </div>
+      </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
