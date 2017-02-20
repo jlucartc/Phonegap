@@ -74,27 +74,28 @@ function startScan(){
     parar.className = 'btn btn-default';
     alert("Escaneando...");
     scanning = true;
-    ble.startScan([],function(device){
-      //alert("Device encontrado!");
+    ble.startScanWithOptions([],{reportDuplicates : true},function(device){
       for(var i = 0; i < beaconsIds.length; i++){
-        if(device.id == beaconsIds[i]){
-          ble.connect(device.id,function(peripheral){
-              alert("Conexão estabelecida: " + peripheral.id+" | "+device.id);
-              alert(JSON.stringify(peripheral));
-              ble.read(device.id,"1804","2407",function(data){
-              var power = new Uint8Array(data);
-              alert(JSON.strigify(data));
-              var d = Math.pow(10,((power[0] - device.rssi) / 20));
-              alert(d+" metros");
+        if(device.id == beaconsIds[i] && device.rssi <= 70){
+          /*ble.connect(device.id,function(peripheral){
+              /*ble.read(device.id,"b9404000-f5f8-466e-aff9-25556b57fe6d","b9404002-f5f8-466e-aff9-25556b57fe6d",function(data){
+              //var power = new Uint8Array(data);
+              if((power[0]*-1) <= device.rssi){
+                for (var i = 0; i < beaconsIds.length; i++) {
+                  if(beaconsIds[i] == device.id){
+                    showMessage(i);
+                  }
+                }
+              }
             },function(err){alert(err);});
           },function(){
-          });
-          //alert("Beacon dentro do alcance! : "+device.rssi+" - (device.rssi > rssi): "+(device.rssi > rssi));
-          //showMessage(i);
+          ble.disconnect(device.id,function(){},function(){});
+        });*/
+          showMessage(i);
         }
       }
       var newButton = document.createElement('button');
-      var name = document.createTextNode(device.name+" - "+device.id+" - "+device.rssi+" - (device.rssi > rssi): "+(device.rssi > rssi));
+      var name = document.createTextNode(device.name+" - "+device.id+" - "+device.rssi);
       newButton.value = device.id;
       newButton.onclick = function(){ devPage(device.id); }
       newButton.className = 'list-group-item';
