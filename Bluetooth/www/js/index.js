@@ -65,7 +65,11 @@ function clean(){
 
 
 function startScan(){
-  ble.isEnabled(function(){alert("Enabled.");
+  if(localStorage.exit == 'true'){
+    navigator.app.exitApp();
+  }
+  ble.isEnabled(function(){/*alert("Enabled.");*/
+      localStorage.exit = false;
       if(scanning == false){
       clean();
       /*var escanear = document.getElementById('escanear');

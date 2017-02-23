@@ -11,13 +11,20 @@
     <div class="container">
       <div class="table">
         <div class="row">
-          <div class="col-sm-12">
-            <p id="msg" style="color:#ffffff;"></p>
+          <div class="col-sm-12" align="center">
+            <p id="msg" style="margin-top:20px;color:#ffffff;"></p>
             <img src="" alt="" id="img">
+            <br><br><button class="btn btn-primary" type="button" name="button" onclick="exit()">Sair</button>
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      function exit(){
+        localStorage.exit = 'true';
+        window.location = 'index.html';
+      }
+    </script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/showMessage.js"></script>
   </body>
