@@ -12,10 +12,19 @@
         },
         "cordova-plugin-ble-central": {
             "PACKAGE_NAME": "com.luca.org"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.luca.org"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.luca.org"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.luca.org"
+        },
+        "cordova-plugin-app-event": {
             "PACKAGE_NAME": "com.luca.org"
         }
     }

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
+/*var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -33,11 +33,12 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
-        //alert('Received Event: ' + id);
+        alert('Received Event: ' + id);
 
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
+        document.getElementById("title").innerHTML = "bg-primary";
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
@@ -45,12 +46,10 @@ var app = {
         //clean();
 
     }
-};
+};*/
 
+document.addEventListener('deviceready',function(){startScan();},function(){alert("Fail!");});
 
-app.initialize();
-
-//alert("Ok");
 var scanning = false;
 var beaconsIds = ['F7:5D:EA:B9:57:58','F2:09:F5:7D:E9:AB'];
 var beaconsNames = ['EST','DEV0FB0EBB0B'];
@@ -66,44 +65,47 @@ function clean(){
 
 
 function startScan(){
-  if(scanning == false){
-    clean();
-    var escanear = document.getElementById('escanear');
-    var parar = document.getElementById('parar');
-    escanear.className = 'btn btn-primary';
-    parar.className = 'btn btn-default';
-    alert("Escaneando...");
-    scanning = true;
-    ble.startScanWithOptions([],{reportDuplicates : true},function(device){
-      for(var i = 0; i < beaconsIds.length; i++){
-        if(device.id == beaconsIds[i] && device.rssi <= 70){
-          /*ble.connect(device.id,function(peripheral){
-              /*ble.read(device.id,"b9404000-f5f8-466e-aff9-25556b57fe6d","b9404002-f5f8-466e-aff9-25556b57fe6d",function(data){
-              //var power = new Uint8Array(data);
-              if((power[0]*-1) <= device.rssi){
-                for (var i = 0; i < beaconsIds.length; i++) {
-                  if(beaconsIds[i] == device.id){
-                    showMessage(i);
+  ble.isEnabled(function(){alert("Enabled.");
+      if(scanning == false){
+      clean();
+      /*var escanear = document.getElementById('escanear');
+      var parar = document.getElementById('parar');
+      escanear.className = 'btn btn-primary';
+      parar.className = 'btn btn-default';*/
+      //alert("Escaneando...");
+      scanning = true;
+      ble.startScanWithOptions([],{reportDuplicates : true},function(device){
+        for(var i = 0; i < beaconsIds.length; i++){
+          if(device.id == beaconsIds[i] && device.rssi >= -70){
+            /*ble.connect(device.id,function(peripheral){
+                /*ble.read(device.id,"b9404000-f5f8-466e-aff9-25556b57fe6d","b9404002-f5f8-466e-aff9-25556b57fe6d",function(data){
+                //var power = new Uint8Array(data);
+                if((power[0]*-1) <= device.rssi){
+                  for (var i = 0; i < beaconsIds.length; i++) {
+                    if(beaconsIds[i] == device.id){
+                      showMessage(i);
+                    }
                   }
                 }
-              }
-            },function(err){alert(err);});
-          },function(){
-          ble.disconnect(device.id,function(){},function(){});
-        });*/
-          showMessage(i);
+              },function(err){alert(err);});
+            },function(){
+            ble.disconnect(device.id,function(){},function(){});
+          });*/
+            showMessage(i);
+          }
         }
-      }
-      var newButton = document.createElement('button');
-      var name = document.createTextNode(device.name+" - "+device.id+" - "+device.rssi);
-      newButton.value = device.id;
-      newButton.onclick = function(){ devPage(device.id); }
-      newButton.className = 'list-group-item';
-      newButton.appendChild(name);
-      var lista = document.getElementById('dev-list').appendChild(newButton);
-    },function(){alert("Erro ao iniciar o scan!");});
-  }else{
-  }
+        /*var newButton = document.createElement('button');
+        var name = document.createTextNode(device.name+" - "+device.id+" - "+device.rssi);
+        newButton.value = device.id;
+        newButton.onclick = function(){ devPage(device.id); }
+        newButton.className = 'list-group-item';
+        newButton.appendChild(name);
+        var lista = document.getElementById('dev-list').appendChild(newButton);*/
+      },function(){alert("Erro ao iniciar o scan!");});
+    }},function(){ble.enable(startScan,false);});
+  //ble.enable(function(){this.startScan();},false);
+  //ble.startStateNotifications(function(state){if(state != 'on'){ble.stopStateNotifications();ble.enable(function(){alert("Bluetooth enabled");startScan();},false);}else{ble.stopStateNotifications();alert('Bluetooth is '+state);}},false);
+
 }
 
 function stopScan(){
