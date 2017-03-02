@@ -11,7 +11,7 @@ Para fazer o build do app para as plataformas android e ios, é necessário inst
 
 OBS: O projeto atual já possui a plataforma android. Essa etapa só precisa ser realizada caso a plataforma ios seja necessária.
 
-Após a instalação, basta acessar a pasta do projeto e executar os seguintes comandos:
+Após a instalação do cordova, basta acessar a pasta do projeto e executar os seguintes comandos:
 
     cordova platform add android
 
@@ -22,7 +22,7 @@ ou
 
 3 - Rodando o app
 
-Para executar o app em seu aparelho mobile, conecte-o ao computador. Dentro do diretório do projeto, execute o seguinte comando:
+Para instalar e executar o app em seu aparelho mobile, conecte-o ao computador. Dentro do diretório do projeto, execute o seguinte comando:
 
       cordova run --device
 
