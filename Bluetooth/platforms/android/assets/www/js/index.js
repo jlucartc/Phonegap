@@ -52,6 +52,7 @@ receivedElement.setAttribute('style', 'display:block;');
 document.addEventListener('deviceready',function(){enable();},function(){alert("Fail!");});
 
 function enable(){
+  localStorage.exit = 'false';
   var escanear = document.getElementById('escanear');
   var parar = document.getElementById('parar');
   escanear.disabled = false;
@@ -91,7 +92,7 @@ function startScan(){
       ble.startScanWithOptions([],{reportDuplicates : true},function(device){
         if(typeof localStorage.beaconsIds !== 'undefined'){
           for(var i = 0; i < localStorage.beaconsIds.length; i++){
-            if(device.id == JSON.parse(localStorage.beaconsIds)[i] && device.rssi >= -70){
+            if(device.id == JSON.parse(localStorage.beaconsIds)[i] && device.rssi >= JSON.parse(localStorage.beaconsRssi)[i]){
               showMessage(i);
             }else{
               addEl(device.name,device.id,device.rssi);

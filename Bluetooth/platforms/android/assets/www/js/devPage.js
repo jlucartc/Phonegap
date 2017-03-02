@@ -17,9 +17,7 @@ info.appendChild(cadastrar1);
 info.appendChild(voltar);
 
 function cadastrar(name,id,rssi){
-  alert('alert');
   if(localStorage.beaconsNames != null){
-    alert('1');
 
     var bnames = JSON.parse(localStorage.beaconsNames);
     var bids = JSON.parse(localStorage.beaconsIds);
@@ -29,9 +27,9 @@ function cadastrar(name,id,rssi){
 
     bnames.push(name);
     bids.push(id);
-    brssi.push(rssi);
-    bimg.push('NULL');
-    bmsgs.push('NULL');
+    brssi.push(70*(-1));
+    bimg.push("NULL");
+    bmsgs.push("NULL");
 
     localStorage.beaconsIds = JSON.stringify(bids);
     localStorage.beaconsRssi = JSON.stringify(brssi);
@@ -41,7 +39,6 @@ function cadastrar(name,id,rssi){
 
     window.location = 'index.html';
   }else{
-    alert('2');
 
     var bnames = [];
     var bids = [];
@@ -51,9 +48,9 @@ function cadastrar(name,id,rssi){
 
     bnames.push(name);
     bids.push(id);
-    brssi.push(rssi);
-    bimg.push('NULL');
-    bmsgs.push('NULL');
+    brssi.push(70*(-1));
+    bimg.push("NULL");
+    bmsgs.push("NULL");
 
     localStorage.beaconsIds = JSON.stringify(bids);
     localStorage.beaconsRssi = JSON.stringify(brssi);
