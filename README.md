@@ -1,5 +1,10 @@
 # Projs
 
+Esse repositório possui 2 projetos:
+
+Hello - projeto teste do apache cordova
+Bluetooth - projeto finalizado de escaner de beacons
+
 1 - Instalação
 
 Para fazer o build do app para as plataformas android e ios, é necessário instalar o cordova/phonegap:
@@ -9,7 +14,7 @@ Para fazer o build do app para as plataformas android e ios, é necessário inst
 
 2 - Adicionando as plataformas
 
-OBS: O projeto atual já possui a plataforma android. Essa etapa só precisa ser realizada caso a plataforma ios seja necessária.
+OBS: O projeto atual(Bluetooth) já possui a plataforma android. Essa etapa só precisa ser realizada caso a plataforma ios seja necessária.
 
 Após a instalação do cordova, basta acessar a pasta do projeto e executar os seguintes comandos:
 
