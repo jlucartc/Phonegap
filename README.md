@@ -2,8 +2,9 @@
 
 Esse repositório possui 2 projetos:
 
-Hello - projeto teste do apache cordova
-Bluetooth - projeto finalizado de escaner de beacons
+Hello -> projeto teste do apache cordova
+
+Bluetooth -> projeto finalizado de escaner de beacons
 
 1 - Instalação
 
